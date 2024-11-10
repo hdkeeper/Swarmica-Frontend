@@ -1,4 +1,4 @@
-import { useContext, useCallback, memo } from 'react';
+import { useContext, memo } from 'react';
 import Spinner from 'react-bootstrap/Spinner';
 
 import { AppActionType, ArticleStatus, Article } from './types';
@@ -8,10 +8,7 @@ type ArticleItemProps = Article & { isVisited: boolean };
 
 const ArticleItem = memo(function ArticleItem({ id, title, url, isVisited }: ArticleItemProps) {
     const dispatch = useContext(AppContext);
-    const addVisited = useCallback(
-        () => isVisited || dispatch({ type: AppActionType.ADD_VISITED, id }),
-        [dispatch, id, isVisited]
-    );
+    const addVisited = () => isVisited || dispatch({ type: AppActionType.ADD_VISITED, id });
 
     const aClass = `ref${isVisited ? ' visited' : ''}`;
     return (

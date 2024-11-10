@@ -1,4 +1,4 @@
-import { useState, useContext, useCallback, memo, ChangeEvent, KeyboardEvent } from 'react';
+import { useState, useContext, memo, ChangeEvent, KeyboardEvent } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
@@ -16,10 +16,7 @@ type LocaleItemProps = {
 
 const LocaleItem = memo(function LocaleItem({ locale }: LocaleItemProps) {
     const dispatch = useContext(AppContext);
-    const setLocale = useCallback(
-        () => dispatch({ type: AppActionType.SET_LOCALE, locale }), 
-        [dispatch, locale]
-    );
+    const setLocale = () => dispatch({ type: AppActionType.SET_LOCALE, locale });
 
     return (
         <Item onClick={setLocale}>{locale.toUpperCase()}</Item>

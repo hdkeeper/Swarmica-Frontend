@@ -1,4 +1,4 @@
-import { useContext, useCallback, memo } from 'react';
+import { useContext, memo } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Form from 'react-bootstrap/Form';
 
@@ -17,10 +17,7 @@ type CategoryItemProps = {
 
 const CategoryItem = memo(function CategoryItem({ id, name, selected }: CategoryItemProps) {
     const dispatch = useContext(AppContext);
-    const toggleSelected = useCallback(
-        () => dispatch({ type: AppActionType.TOGGLE_CATEGORY, id }),
-        [dispatch, id]
-    );
+    const toggleSelected = () => dispatch({ type: AppActionType.TOGGLE_CATEGORY, id });
 
     return (
         <Item>
