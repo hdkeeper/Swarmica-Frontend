@@ -50,7 +50,7 @@ export const getArticles = async (search: string, locale: string, categories?: n
 // localStorage
 
 export const getVisited = (): Set<number> => {
-    return new Set(JSON.parse(localStorage.getItem('visited') || '[]'));
+    return new Set(JSON.parse(localStorage.getItem('visited') || '[]') as number[]);
 };
 
 export const saveVisited = (visited: Set<number>) => {
